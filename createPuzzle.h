@@ -2,7 +2,7 @@
 #include "stdio.h"
 
 //// Creates The Puzzle Board using either the default settings or
-//// a User Inputed Puzzle. If User Input is 1, the default puzzle is used 
+//// a User Inputed Puzzle. If User Input is 1, the default puzzle is used
 //// Else if User Input is 2, User is prompted to give details of
 //// puzzle vertical and horizontal size.
 //// The user is then prompeted to provide a value for each space on the puzzle
@@ -14,25 +14,24 @@ void createPuzzle(char userInput, vector < vector<int> > &puzzleBoard){
   int verticalSize = 3; // default vertical Size
   string tempStr; // a temporary string used to take user inputted rows
   vector<string> tokens; //a vector of every value the user inputted if default was not selected
-
+  vector<int> userPuzzle;
   if(userInput == '1'){
-    populateBoard(puzzleBoard, defaultB, verticalSize, horizontalSize);
+    populateBoard(puzzleBoard, defaultB, verticalSize, horizontalSize, userPuzzle);
     return; //return default puzzle
   }
 
   else if(userInput == '2'){
     //prompt user to create puzzle
-
     defaultB = false;
-
     //enter horizontal and vertical values
     cout << "Please enter size of board on X-axis (horizontal size): ";
     cin >> horizontalSize;
     cout << "Please enter size of board on Y-axis (vertical size): ";
     cin >> verticalSize;
+    cout << "\nPlease enter puzzle, using a zero as the blank space!\n" << endl;
     cin.ignore(); //clears buffer
 
-    //takes each value per row
+    //takes each value per row puts it into string vector
     for(int i = 0; i < verticalSize; i++){
       cout << "Please enter row " << i + 1 << " , using spaces to separate the numbers:";
       getline(cin, tempStr);
@@ -43,9 +42,15 @@ void createPuzzle(char userInput, vector < vector<int> > &puzzleBoard){
       cout << endl;
       tempStr = "";
     }
-
+    //static cast string to int vector
+    for(int i = 0; i < tokens.size(); i++){
+      istringstream buffer(tokens.at(i));
+      int value = 0;
+      buffer >> value;
+      userPuzzle.push_back(value);
+    }
     //populates board using user inputs
-    populateBoard(puzzleBoard,defaultB,verticalSize,horizontalSize);
+    populateBoard(puzzleBoard,defaultB,verticalSize,horizontalSize, userPuzzle);
   }
 
   // Error checking, just in case
