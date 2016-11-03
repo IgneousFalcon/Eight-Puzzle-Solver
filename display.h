@@ -1,5 +1,6 @@
 
 void displayBoard(vector < vector<int> > &B){
+  cout << "This is your current Puzzle: " << endl << endl;
   for(int x = 0; x < B.size(); x++){
     for(int i = 0; i < B.at(0).size(); i++){
       cout << "| = = = ";

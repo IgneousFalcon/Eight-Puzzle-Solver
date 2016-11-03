@@ -9,20 +9,26 @@ void populateBoard(vector < vector<int> > &Board, bool defaultBoard, int vSize, 
     vector <int> temp; // temp vector used to populate vertical elements in board
     for(int i = 0; i < vSize; i++){
       for(int j = 0; j < hSize; j++){
-
-        if(defaultBoard){
-
-          if((i == 2)&&(j == 2)){
-            temp.push_back(0);
-          }
-          else{
-            temp.push_back(k);
-            k++;
-          }
-        }
-        else if(!defaultBoard){
+        if(!defaultBoard){
             temp.push_back(userP.at(k - 1));
             k++;
+        }
+      }
+      if(defaultBoard){
+        if(i == 0){
+          temp.push_back(1);
+          temp.push_back(5);
+          temp.push_back(3);
+        }
+        if(i == 1){
+          temp.push_back(4);
+          temp.push_back(0);
+          temp.push_back(6);
+        }
+        if(i == 2){
+          temp.push_back(7);
+          temp.push_back(2);
+          temp.push_back(8);
         }
       }
       Board.push_back(temp);
