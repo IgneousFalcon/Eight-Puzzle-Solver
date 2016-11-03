@@ -6,8 +6,7 @@
 
 void populateBoard(vector < vector<int> > &Board, bool defaultBoard, int vSize, int hSize, vector<int> userP){
     int k = 1;
-    vector <int> temp; // temp vector used to pupolate vertical elements in board
-
+    vector <int> temp; // temp vector used to populate vertical elements in board
     for(int i = 0; i < vSize; i++){
       for(int j = 0; j < hSize; j++){
 

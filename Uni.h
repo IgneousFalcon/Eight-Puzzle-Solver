@@ -1,3 +1,4 @@
-void UniformCostSearch(vector <vector<int> > ){
+void UniformCostSearch(Puzzle problem){
+
   return;
 };

@@ -9,6 +9,7 @@
 #include "createPuzzle.h"
 #include "display.h"
 #include "pickAlgorithm.h"
+#include "Puzzle.h"
 #include "Uni.h"
 #include "Mis.h"
 #include "Manhattan.h"
@@ -21,19 +22,23 @@ int main(int argc, char* argv[]){
   bool UniformCost = false;
   bool MisplacedTile = false;
   bool ManhattanDist = false;
+  Puzzle Problem;
 
   prompt(userInput, validInput); // prompts user for Input
   createPuzzle(userInput, puzzleBoard); // creates puzzleBoard
   displayBoard(puzzleBoard); // Display Board
   pickAlgorithm(UniformCost, MisplacedTile, ManhattanDist);
+
+  Problem.Set_current(puzzleBoard);
+
   if(UniformCost){
-    UniformCostSearch(puzzleBoard);
+    UniformCostSearch();
   }
   else if(MisplacedTile){
     MisplacedTileHeuristic(puzzleBoard);
   }
   else if(ManhattanDist){
-    ManhattanDistance(puzzleBoard);
+
   }
 
   return 0;
